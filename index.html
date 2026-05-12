@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Võ Ngọc Yến Vy</title>
+    <style>
+        /* CSS Variables cho theme */
+        :root {
+            --primary-color: #a8d5ba; /* Xanh lá nhạt */
+            --secondary-color: #f0f8f0;
+            --text-color: #333;
+            --bg-color: #ffffff;
+            --shadow: rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        .dark {
+            --primary-color: #6b9b7b;
+            --secondary-color: #2d3748;
+            --text-color: #e2e8f0;
+            --bg-color: #1a202c;
+            --shadow: rgba(0, 0, 0, 0.3);
+        }
+
+        /* Reset và base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            transition: var(--transition);
+            overflow-x: hidden;
+        }
+
+        /* Animation gió thổi qua */
+        .wind-animation {
+            position: fixed;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(168, 213, 186, 0.1), transparent);
+            animation: wind-blow 8s infinite linear;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        @keyframes wind-blow {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: var(--bg-color);
+            box-shadow: 0 2px 10px var(--shadow);
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-color);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-color);
+            transition: var(--transition);
+        }
+
+        /* Main content */
+        main {
+            margin-top: 80px;
+        }
+
+        section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Hero */
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            min-height: 80vh;
+            background: linear-gradient(135deg, var(--secondary-color), var(--bg-color));
+        }
+
+        .hero-content {
+            flex: 1;
+            padding-right: 2rem;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background-color: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: var(--transition);
+        }
+
+        .cta-button:hover {
+            background-color: #8bc49a;
+            transform: translateY(-2px);
+        }
+
+        .hero-image {
+            flex: 1;
+            text-align: center;
+        }
+
+        .hero-image img {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: 0 10px 30px var(--shadow);
+        }
+
+        /* About */
+        .about {
+            background-color: var(--secondary-color);
+        }
+
+        .about h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            color: var(--primary-color);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        /* Skills */
+        .skills {
+            background-color: var(--bg-color);
+        }
+
+        .skills h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            color: var(--primary-color);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-card {
+            background-color: var(--secondary-color);
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 15px var(--shadow);
+            transition: var(--transition);
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px var(--shadow);
+        }
+
+        .skill-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        /* Projects */
+        .projects {
+            background-color: var(--secondary-color);
+        }
+
+        .projects h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            color: var(--primary-color);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background-color: var(--bg-color);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px var(--shadow);
+            transition: var(--transition);
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px var(--shadow);
+        }
+
+        .project-image {
+            height: 200px;
+            background-color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-content h3 {
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        /* Contact */
+        .contact {
+            background-color: var(--bg-color);
+        }
+
+        .contact h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            color: var(--primary-color);
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            align-items: start;
+        }
+
+        .contact-info {
+            font-size: 1.1rem;
+        }
+
+        .contact-info p {
+            margin-bottom: 1rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-links a {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            line-height: 50px;
+            border-radius: 50%;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background-color: #8bc49a;
+            transform: scale(1.1);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--secondary-color);
+            text-align: center;
+            padding: 2rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                padding: 1rem;
+            }
+
+            .nav-links {
+                margin-top: 1rem;
+            }
+
+            .nav-links li {
+                margin-left: 1rem;
+            }
+
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                padding: 2rem;
+            }
+
+            .hero-content {
+                padding-right: 0;
+                margin-bottom: 2rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .about-content,
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+
+            .skills-grid,
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Fade in animation */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Smooth scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <!-- Animation gió -->
+    <div class="wind-animation"></div>
+
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">YNV</div>
+            <ul class="nav-links">
+                <li><a href="#hero">Trang chủ</a></li>
+                <li><a href="#about">Giới thiệu</a></li>
+                <li><a href="#skills">Kỹ năng</a></li>
+                <li><a href="#projects">Dự án</a></li>
+                <li><a href="#contact">Liên hệ</a></li>
+            </ul>
+            <button class="theme-toggle" id="theme-toggle">🌙</button>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section id="hero" class="hero fade-in">
+            <div class="hero-content">
+                <h1>Xin chào, tôi là Võ Ngọc Yến Vy</h1>
+                <p>Sinh viên ngành Đồ họa Kỹ thuật số tại Đại học Gia Định. Tôi đam mê thiết kế UI/UX và tạo ra những trải nghiệm người dùng tuyệt vời.</p>
+                <a href="#contact" class="cta-button">Liên hệ với tôi</a>
+            </div>
+            <div class="hero-image">
+                <img src="https://via.placeholder.com/300x300/cccccc/000000?text=Ảnh+đại+diện" alt="Võ Ngọc Yến Vy">
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="about fade-in">
+            <h2>Giới thiệu</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Tôi là Võ Ngọc Yến Vy, sinh viên năm cuối ngành Đồ họa Kỹ thuật số tại Đại học Gia Định, khoa Công nghệ Thông tin. Với niềm đam mê mãnh liệt đối với thiết kế, tôi luôn tìm cách kết hợp giữa nghệ thuật và công nghệ để tạo ra những sản phẩm sáng tạo và hữu ích.</p>
+                    <p>Trong quá trình học tập, tôi đã tham gia nhiều dự án thiết kế, từ poster quảng cáo đến giao diện ứng dụng di động. Tôi tin rằng thiết kế tốt không chỉ đẹp về mặt thẩm mỹ mà còn phải thân thiện với người dùng và giải quyết được vấn đề thực tế.</p>
+                </div>
+                <div class="about-text">
+                    <p>Ngoài việc học tập, tôi cũng tham gia các hoạt động ngoại khóa như câu lạc bộ thiết kế của trường và tham gia các cuộc thi thiết kế. Tôi luôn học hỏi và cập nhật kiến thức mới trong lĩnh vực UI/UX design.</p>
+                    <p>Mục tiêu của tôi là trở thành một nhà thiết kế chuyên nghiệp, có thể tạo ra những sản phẩm mang lại giá trị cho cộng đồng và xã hội.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="skills fade-in">
+            <h2>Kỹ năng</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <div class="skill-icon">🎨</div>
+                    <h3>Adobe Photoshop</h3>
+                    <p>Chỉnh sửa ảnh, thiết kế poster, banner</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">✏️</div>
+                    <h3>Adobe Illustrator</h3>
+                    <p>Thiết kế vector, logo, icon</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">📐</div>
+                    <h3>Figma</h3>
+                    <p>Thiết kế UI/UX, prototype</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">💻</div>
+                    <h3>HTML/CSS</h3>
+                    <p>Frontend development cơ bản</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">🎯</div>
+                    <h3>Adobe InDesign</h3>
+                    <p>Thiết kế ấn phẩm, brochure</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">🎬</div>
+                    <h3>Adobe After Effects</h3>
+                    <p>Motion graphics, animation</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="projects fade-in">
+            <h2>Dự án nổi bật</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image">📱</div>
+                    <div class="project-content">
+                        <h3>Ứng dụng Fitness Tracker</h3>
+                        <p>Thiết kế giao diện cho ứng dụng theo dõi sức khỏe và thể dục. Tập trung vào UX thân thiện và màu sắc động lực.</p>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">🛒</div>
+                    <div class="project-content">
+                        <h3>Website E-commerce</h3>
+                        <p>Thiết kế UI cho trang web bán hàng online với layout responsive và trải nghiệm mua sắm mượt mà.</p>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">📖</div>
+                    <div class="project-content">
+                        <h3>App Học Ngoại Ngữ</h3>
+                        <p>Giao diện cho ứng dụng học tiếng Anh với gamification elements và thiết kế thân thiện với người mới bắt đầu.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact fade-in">
+            <h2>Liên hệ</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <p><strong>Email:</strong> yenvy@example.com</p>
+                    <p><strong>Điện thoại:</strong> +84 123 456 789</p>
+                    <p><strong>Địa chỉ:</strong> TP. Hồ Chí Minh, Việt Nam</p>
+                </div>
+                <div class="social-links">
+                    <a href="#" title="LinkedIn">💼</a>
+                    <a href="#" title="Behance">🎨</a>
+                    <a href="#" title="Dribbble">🏀</a>
+                    <a href="#" title="Instagram">📷</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Võ Ngọc Yến Vy. Tất cả quyền được bảo lưu.</p>
+    </footer>
+
+    <script>
+        // Theme toggle functionality
+        const themeToggle = document.getElementById('theme-toggle');
+        const body = document.body;
+
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark');
+            themeToggle.textContent = body.classList.contains('dark') ? '☀️' : '🌙';
+        });
+
+        // Fade in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
