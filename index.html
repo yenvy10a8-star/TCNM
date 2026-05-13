@@ -243,16 +243,14 @@
 
     .hero {
       display: grid;
-      grid-template-columns: 1fr;
-      justify-items: center;
+      place-items: center;
       text-align: center;
-      align-items: center;
       gap: 18px;
       padding: 90px 0 50px;
       position: relative;
       overflow: visible;
       min-height: 72vh;
-      width: min(860px, 100%);
+      width: min(820px, 100%);
       margin: 0 auto;
       background: rgba(8, 12, 24, 0.94);
       border-radius: 40px;
@@ -285,7 +283,7 @@
     .hero-copy {
       position: relative;
       z-index: 1;
-      max-width: 760px;
+      max-width: 720px;
       width: 100%;
       margin: 0 auto;
       padding: 0;
@@ -293,7 +291,7 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 18px;
+      gap: 16px;
     }
 
     .hero-bg::before {
@@ -363,14 +361,14 @@
     }
 
     .hero-title {
-      font-size: clamp(3rem, 5vw, 4.2rem);
-      margin: 16px 0 24px;
-      line-height: 1;
-      letter-spacing: -0.05em;
+      font-size: clamp(2.8rem, 4.5vw, 3.8rem);
+      margin: 16px 0 22px;
+      line-height: 1.02;
+      letter-spacing: -0.04em;
       color: #ffffff;
       text-transform: none;
-      text-shadow: 0 0 20px rgba(0, 0, 0, 0.22);
-      word-spacing: 0.14em;
+      text-shadow: 0 0 18px rgba(0, 0, 0, 0.22);
+      word-spacing: 0.12em;
     }
 
     .hero-title-accent {
@@ -382,16 +380,16 @@
     }
 
     .hero-logo {
-      width: 180px;
-      height: 180px;
+      width: 160px;
+      height: 160px;
       border-radius: 32px;
       border: 2px solid rgba(245, 197, 75, 0.95);
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      margin: 0 auto 24px;
+      margin: 0 auto 20px;
       backdrop-filter: blur(10px);
-      box-shadow: 0 28px 60px rgba(245, 197, 75, 0.22);
+      box-shadow: 0 24px 48px rgba(245, 197, 75, 0.22);
       background: rgba(255, 255, 255, 0.08);
     }
 
