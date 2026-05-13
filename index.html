@@ -245,11 +245,9 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      text-align: center;
       min-height: 100vh;
-      width: 100%;
       position: relative;
-      overflow: visible;
-      margin: 0 auto;
       background: transparent;
       border-radius: 0;
       box-shadow: none;
@@ -294,9 +292,9 @@
     .hero-copy {
       max-width: 760px;
       padding-right: 0;
-      border-left: 4px solid rgba(245, 197, 75, 0.55);
-      padding-left: 22px;
-      margin-left: 8px;
+      border-left: none;
+      padding-left: 0;
+      margin-left: 0;
       position: relative;
       z-index: 1;
     }
@@ -1024,6 +1022,29 @@
         opacity: 1;
         transform: translateY(0);
       }
+    }
+
+    /* XÓA TOÀN BỘ THANH DỌC BÊN TRÁI */
+    .hero::before,
+    .hero::after,
+    .hero-content::before,
+    .hero-content::after,
+    .line,
+    .vertical-line,
+    .left-line {
+      display: none !important;
+      width: 0 !important;
+      height: 0 !important;
+      border: none !important;
+      background: transparent !important;
+      content: none !important;
+      box-shadow: none !important;
+    }
+
+    /* XÓA BORDER TRÁI NẾU CÓ */
+    .hero,
+    .hero-content {
+      border-left: none !important;
     }
   </style>
 </head>
