@@ -302,23 +302,44 @@
 
     .hero-copy {
       max-width: 760px;
-      padding-right: 0;
-      border-left: 4px solid rgba(245, 197, 75, 0.55);
-      padding-left: 22px;
-      margin-left: 8px;
-      position: relative;
-      z-index: 1;
-    }
+        margin: 0 auto;
+        padding: 0 1rem;
+        position: relative;
+        z-index: 1;
+        text-align: center;
+      }
 
-    .hero-subtitle {
-      margin: 18px 0 0;
-      font-size: 1.05rem;
-      color: var(--text);
-      font-weight: 500;
-      max-width: 720px;
-      line-height: 1.7;
-      letter-spacing: 0.02em;
-    }
+      .hero-logo {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 64px;
+        height: 64px;
+        margin: 0 auto 1.2rem;
+        border: 2px solid rgba(245, 197, 75, 0.9);
+        border-radius: 20px;
+        background: rgba(255, 255, 255, 0.85);
+        color: var(--text);
+        font-weight: 800;
+        font-size: 1rem;
+        box-shadow: 0 18px 40px rgba(245, 197, 75, 0.16);
+      }
+
+      body.dark .hero-logo {
+        background: rgba(10, 10, 14, 0.84);
+      }
+
+      .hero-subtitle {
+        margin: 18px 0 0;
+        font-size: 1.05rem;
+        color: var(--text);
+        font-weight: 500;
+        max-width: 720px;
+        line-height: 1.7;
+        letter-spacing: 0.02em;
+        margin-left: auto;
+        margin-right: auto;
+      }
 
     .hero-quote {
       margin: 22px 0 34px;
@@ -346,8 +367,11 @@
       margin: 28px 0 32px;
       line-height: 1.02;
       letter-spacing: -0.04em;
-      color: var(--primary);
-      text-transform: uppercase;
+      background: linear-gradient(90deg, #ffffff 50%, var(--primary) 50%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-transform: none;
       text-shadow: 0 0 18px rgba(245, 197, 75, 0.35);
       letter-spacing: 0.04em;
       word-spacing: 0.2em;
@@ -362,6 +386,7 @@
 
     .hero-actions {
       display: flex;
+      justify-content: center;
       flex-wrap: wrap;
       gap: 16px;
     }
@@ -989,6 +1014,7 @@
     <section class="hero" id="home">
       <div class="hero-bg" aria-hidden="true"></div>
       <div class="hero-copy fade-up delay-1">
+        <div class="hero-logo">VY</div>
         <h1 class="hero-title">Võ Ngọc Yến Vy</h1>
         <div class="hero-subtitle">Sinh viên Đại học Gia Định - Đồ họa Kỹ thuật số</div>
         <div class="hero-quote">"Thiết kế là cách tôi kể chuyện với thế giới."</div>
